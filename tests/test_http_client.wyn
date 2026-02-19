@@ -1,21 +1,30 @@
-fn main() -> int {
-    Test.init("HTTP Client Package")
-
+test "url build" {
     // URL construction
     var base = "https://api.example.com"
-    Test.assert_eq_str(base + "/users", "https://api.example.com/users", "url build")
-    Test.assert_eq_str(base + "/users/" + int_to_string(42), "https://api.example.com/users/42", "url with id")
+    assert_eq(base + "/users", "https://api.example.com/users")
+}
 
+test "url with id" {
+    // URL construction
+    var base = "https://api.example.com"
+    assert_eq(base + "/users/" + int_to_string(42), "https://api.example.com/users/42")
+}
+
+test "json body" {
+    // URL construction
+    var base = "https://api.example.com"
     // JSON body
     var json = "{\"name\": \"Alice\", \"age\": 30}"
-    Test.assert(json.contains("Alice"), "json body")
+    assert(json.contains("Alice"))
+}
 
+test "live GET httpbin" {
+    // URL construction
+    var base = "https://api.example.com"
+    // JSON body
+    var json = "{\"name\": \"Alice\", \"age\": 30}"
     // Live GET (if network available)
     var resp = Http.get("https://httpbin.org/get")
     if resp.len() > 10 {
-        Test.assert(resp.contains("origin"), "live GET httpbin")
-    }
-
-    Test.summary()
-    return 0
+    assert(resp.contains("origin"))
 }
