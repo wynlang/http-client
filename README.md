@@ -1,4 +1,4 @@
-# http-client — Official Wyn Package
+# http-client - Official Wyn Package
 
 HTTP client with JSON, headers, and auth. Pure Wyn, wraps built-in Http module.
 
