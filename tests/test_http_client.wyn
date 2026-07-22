@@ -19,12 +19,9 @@ test "json body" {
 }
 
 test "live GET httpbin" {
-    // URL construction
-    var base = "https://api.example.com"
-    // JSON body
-    var json = "{\"name\": \"Alice\", \"age\": 30}"
-    // Live GET (if network available)
+    // Live GET (skip assertion if network unavailable)
     var resp = Http.get("https://httpbin.org/get")
     if resp.len() > 10 {
-    assert(resp.contains("origin"))
+        assert(resp.contains("origin"))
+    }
 }

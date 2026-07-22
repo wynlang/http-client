@@ -15,31 +15,31 @@ fn HttpClient_set_header(name: string, value: string) {
 
 // GET request
 fn HttpClient_get(url: string) -> string {
-    return http_get(url)
+    return Http.get(url)
 }
 
 // POST request with body
 fn HttpClient_post(url: string, body: string) -> string {
-    return http_post(url, body)
+    return Http.post(url, body)
 }
 
 // POST JSON - sets Content-Type automatically
 fn HttpClient_post_json(url: string, json: string) -> string {
     Http.set_header("Content-Type", "application/json")
-    return http_post(url, json)
+    return Http.post(url, json)
 }
 
 // GET with Bearer token auth
 fn HttpClient_get_auth(url: string, token: string) -> string {
     Http.set_header("Authorization", "Bearer " + token)
-    return http_get(url)
+    return Http.get(url)
 }
 
 // POST with Bearer token auth
 fn HttpClient_post_auth(url: string, body: string, token: string) -> string {
     Http.set_header("Authorization", "Bearer " + token)
     Http.set_header("Content-Type", "application/json")
-    return http_post(url, body)
+    return Http.post(url, body)
 }
 
 // Clear all custom headers
