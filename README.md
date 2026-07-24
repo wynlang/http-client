@@ -1,28 +1,17 @@
-# http-client - Official Wyn Package
+# http-client
 
-HTTP client with JSON, headers, and auth. Pure Wyn, wraps built-in Http module.
-
-## Install
-
-```bash
-wyn pkg install github.com/wynlang/http-client
-```
-
-## Usage
+An HTTP client is **built in** to Wyn - no package needed. Use the `Http`
+module directly:
 
 ```wyn
-// Simple GET
-var body = HttpClient_get("https://api.example.com/users")
+var body = Http.get("https://api.example.com/users")
+var resp = Http.post("https://api.example.com/users", "{\"name\":\"Alice\"}")
 
-// POST JSON
-var resp = HttpClient_post_json("https://api.example.com/users", "{\"name\":\"Alice\"}")
-
-// With auth
-var data = HttpClient_get_auth("https://api.example.com/me", "your-token")
+Http.set_header("Authorization", "Bearer your-token")
+Http.set_header("Content-Type", "application/json")
+var me = Http.get("https://api.example.com/me")
+Http.clear_headers()
 ```
 
-## Test
-
-```bash
-wyn run tests/test_http_client.wyn
-```
+This repository previously shipped a thin `HttpClient_*` wrapper that only
+forwarded to those built-ins, so it has been emptied to this note.

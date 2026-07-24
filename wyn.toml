@@ -1,4 +1,0 @@
-[project]
-name = "http-client"
-version = "0.1.0"
-description = "HTTP client with JSON, headers, auth, timeouts"
